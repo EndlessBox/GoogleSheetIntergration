@@ -1,0 +1,110 @@
+@import "../variables";
+
+.home {
+  .page-header {
+    padding: 60px 0 40px;
+    .d-none {
+      display: block !important;
+    }
+    .actions {
+      display: flex;
+      .divider-vertical {
+        width: 1px;
+        height: 36px;
+        margin: 0 24px;
+        background-color: $--tblr-gray-300;
+      }
+      .dropdown {
+        .connected-acc {
+          display: flex;
+          align-items: center;
+          padding: 5px 16px 5px 6px;
+          .avatar {
+            border: 1px solid $--tblr-gray-300;
+            margin-right: 10px;
+            margin-left: 0;
+            width: 24px;
+            height: 24px;
+          }
+        }
+        .dropdown-menu {
+          li {
+            padding: 6px;
+            button {
+              padding: 0;
+              border: none;
+              background: none;
+              color: $--tblr-red;
+              .icon {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .table-responsive {
+    background-color: white;
+    border: 1px solid $--tblr-gray-300;
+    border-radius: 6px;
+    overflow: visible;
+    .table {
+      thead {
+        display: flex;
+        width: 100%;
+        tr {
+          display: flex;
+          width: 100%;
+          th {
+            display: flex;
+            width: 100%;
+            padding: 14px;
+            color: $--tblr-gray-600;
+            font-size: 12px;
+          }
+          th:last-child {
+            justify-content: flex-end;
+          }
+        }
+      }
+      tbody {
+        border-top-width: 0px;
+        display: flex;
+        flex-direction: column;
+        tr {
+          display: flex;
+          width: 100%;
+          td {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 14px;
+            line-height: 20px;
+          }
+          td:last-child {
+            display: flex;
+            justify-content: flex-end;
+          }
+          .td_status {
+            min-width: 158px;
+          }
+        }
+        tr:last-child {
+          td {
+            border-bottom: none;
+          }
+        }
+        .dropdown {
+          .automation-status {
+            padding-left: 10px;
+          }
+          .automation-status-icon {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

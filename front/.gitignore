@@ -1,0 +1,10 @@
+node_modules/
+public/
+.env
+dump.rdb
+yarn-error.log
+**/.DS_Store
+/.vscode
+jspm_packages
+/*.log
+__generated__

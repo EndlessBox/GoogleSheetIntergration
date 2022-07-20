@@ -1,0 +1,126 @@
+type Query {
+  googleAccount: AppAccount!
+  getSpreedSheets(nextPageToken: String, first: Int, after: String, endCursor: String): getSpreedSheets!
+  getSheets(spreadsheetId: String): [sheet!]!
+  getSpreadSheetHeaderColumns(spreadsheetId: String!, sheetId: Int!): [String!]!
+  getAutomation(automationId: String!): getAutomation
+  getTags(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+  ): Boolean!
+}
+
+type AppAccount {
+  """The ID of an object"""
+  id: ID!
+  _id: Int!
+  account: googleAccountDetail
+  automations: [Automation]!
+}
+
+type googleAccountDetail {
+  """The ID of an object"""
+  id: ID!
+  _id: Int!
+  email: String!
+  name: String!
+  given_name: String!
+  family_name: String!
+  picture: String!
+  revoked: Boolean!
+}
+
+type Automation {
+  """The ID of an object"""
+  id: ID!
+  _id: String!
+  type: String!
+  spreadsheet: spreedSheetDetail
+  sheetId: Int!
+  created_at: String!
+  active: Boolean!
+}
+
+type spreedSheetDetail {
+  node: node
+  cursor: String
+}
+
+type node {
+  id: String!
+  name: String!
+}
+
+type getSpreedSheets {
+  pageInfo: PageInfo!
+  edges: [spreedSheetDetail]
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type sheet {
+  properties: properties!
+}
+
+type properties {
+  sheetId: Int!
+  title: String!
+}
+
+type getAutomation {
+  """The ID of an object"""
+  id: ID!
+  _id: String!
+  created_at: String!
+  spreadsheet: spreadsheetDetails
+  sheet: sheetDetails
+  metaFields: metaFields
+  type: String!
+  group: Boolean!
+}
+
+type spreadsheetDetails {
+  id: String!
+  name: String!
+}
+
+type sheetDetails {
+  id: String!
+  name: String!
+}
+
+scalar metaFields
+
+type Mutation {
+  addGoogleAccount(token: String!): AppAccount!
+  updateRevokedAccount(token: String!): AppAccount!
+  createSpreedsheet(title: String!, sheetTitle: String!): createSpreadsheet
+  createAutomation(spreadsheetId: String!, sheetId: Int!, metaFields: metaFields, group: Boolean!, automationType: automationType, tags: String): AppAccount!
+  updateAutoActivation(automationId: String!): AppAccount!
+  updateAutomation(metaFields: metaFields!, automationId: String!, group: Boolean!): getAutomation
+  deleteAutomation(automationId: String!): AppAccount!
+  disconnect: AppAccount!
+}
+
+type createSpreadsheet {
+  spreadsheetId: String!
+  properties: spreadsheetProperties
+  sheets: [sheet]!
+}
+
+type spreadsheetProperties {
+  title: String
+}
+
+input automationType {
+  contacts: Boolean!
+  orders: Boolean!
+}

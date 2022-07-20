@@ -1,0 +1,15 @@
+{
+  "name": "google-sheets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:LightFunnels/lfapp-google-sheets.git",
+  "author": "naoufal bardouni <bardouni.naoufal@gmain.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.13.0",
+    "eslint-plugin-react": "^7.29.4",
+    "typescript": "^4.6.3"
+  }
+}
